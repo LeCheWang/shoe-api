@@ -7,7 +7,7 @@ module.exports = (app) => {
   app.use('/*', (req, res) => {
     res.json({
       statusCode: 404,
-      message: 'not found',
+      message: 'page not found',
     });
   });
 };
