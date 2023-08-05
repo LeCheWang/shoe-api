@@ -5,13 +5,14 @@ module.exports = {
     try {
       const imageUrl = req.files['img']?.[0]?.path;
       console.log(imageUrl);
-      const { name, description, price } = req.body;
+      const { name, description, price, category } = req.body;
 
       // Tạo giày mới
       const shoe = {
         name,
         description,
         price,
+        category,
         imageUrl,
       };
 
@@ -28,7 +29,12 @@ module.exports = {
 
   getShoes: async (req, res) => {
     try {
-      const shoes = await Shoe.find();
+      const category = req.query.category;
+      const bodyQuery = {};
+      if (category) {
+        bodyQuery.category = category;
+      }
+      const shoes = await Shoe.find(bodyQuery);
       return res.status(200).json(shoes);
     } catch (error) {
       return res

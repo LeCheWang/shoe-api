@@ -19,6 +19,11 @@ const shoeSchema = new mongoose.Schema(
       default:
         'https://rukminim1.flixcart.com/image/450/500/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=90&crop=false',
     },
+    category: {
+      type: String,
+      enum: ['Main', 'Soccer', 'Sneaker', 'Basketball', 'Oxford', 'Loafer'],
+      default: 'Main',
+    },
   },
   {
     versionKey: false,
