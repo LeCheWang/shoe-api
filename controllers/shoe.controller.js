@@ -3,10 +3,12 @@ const Shoe = require('../models/shoe.model');
 module.exports = {
   createShoe: async (req, res) => {
     try {
-      const imageUrl = req.files['img']?.[0]?.path;
+      let imageUrl = req.files['img']?.[0]?.path;
       console.log(imageUrl);
       const { name, description, price, category } = req.body;
-
+      if (!imageUrl) {
+        imageUrl = req.body.imageUrl;
+      }
       // Tạo giày mới
       const shoe = {
         name,
