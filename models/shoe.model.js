@@ -14,6 +14,16 @@ const shoeSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    newPrice: {
+      type: Number,
+      requried: true,
+      default: 990
+    },
+    sizes: {
+      type: String,
+      requried: true,
+      default: "37,38,39,40"
+    },
     imageUrl: {
       type: String,
       default:
