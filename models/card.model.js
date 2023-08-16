@@ -14,6 +14,10 @@ const cartSchema = new mongoose.Schema({
         ref: 'shoe',
         required: true
       },
+      size: {
+        type: String,
+        required: true
+      },
       quantity: {
         type: Number,
         required: true,
@@ -26,6 +30,6 @@ const cartSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Cart = mongoose.model('cart', cartSchema);
+const Cart = mongoose.model('card', cartSchema);
 
 module.exports = Cart;
