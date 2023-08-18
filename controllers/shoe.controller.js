@@ -5,7 +5,7 @@ module.exports = {
     try {
       let imageUrl = req.files['img']?.[0]?.path;
       console.log(imageUrl);
-      const { name, description, price, category } = req.body;
+      const { name, description, price, newPrice, sizes, category } = req.body;
       if (!imageUrl) {
         imageUrl = req.body.imageUrl;
       }
@@ -14,6 +14,8 @@ module.exports = {
         name,
         description,
         price,
+        newPrice,
+        sizes,
         category,
         imageUrl,
       };
