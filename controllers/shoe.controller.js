@@ -27,7 +27,7 @@ module.exports = {
     } catch (error) {
       return res
         .status(500)
-        .json({ error: 'Đã xảy ra lỗi khi tạo giày: ' + error.message });
+        .json({ error: 'Error: ' + error.message });
     }
   },
 
