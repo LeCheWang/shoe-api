@@ -22,12 +22,12 @@ module.exports = {
     if (!card) {
       newCard = await cardModel.create({
         user: user,
-        items: body,
+        items: [body],
       });
     } else {
       newCard = await cardModel.findOneAndUpdate(
         { user: user },
-        { items: card.items.concat(body) },
+        { items: [...card.items, body] },
         { new: true },
       );
     }
