@@ -17,12 +17,12 @@ const shoeSchema = new mongoose.Schema(
     newPrice: {
       type: Number,
       requried: true,
-      default: 990
+      default: 990,
     },
     sizes: {
       type: String,
       requried: true,
-      default: "37,38,39,40"
+      default: '37,38,39,40',
     },
     imageUrl: {
       type: String,

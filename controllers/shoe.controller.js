@@ -67,16 +67,24 @@ module.exports = {
     try {
       const shoeId = req.params.id;
 
-      const body = req.body;
-
-      // Kiểm tra xem giày có tồn tại trong CSDL hay không
-      const existingShoe = await Shoe.findById(shoeId);
-      if (!existingShoe) {
-        return res.status(404).json({ error: 'Không tìm thấy giày' });
+      let imageUrl = req.files['img']?.[0]?.path; 
+      const { name, description, price, newPrice, sizes, category } = req.body;
+      if (!imageUrl) {
+        imageUrl = req.body.imageUrl;
       }
+      // Tạo giày mới
+      const shoe = {
+        name,
+        description,
+        price,
+        newPrice,
+        sizes,
+        category,
+        imageUrl,
+      };
 
       // Cập nhật thông tin giày
-      const updated_shoe = await Shoe.findByIdAndUpdate(shoeId, body, {
+      const updated_shoe = await Shoe.findByIdAndUpdate(shoeId, shoe, {
         new: true,
       });
 

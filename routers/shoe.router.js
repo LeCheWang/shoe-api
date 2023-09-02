@@ -26,6 +26,10 @@ router
   .get(getShoes)
   .post(upload.fields([{ name: 'img', maxCount: 1 }]), createShoe);
 
-router.route('/:id').get(getShoeById).delete(deleteShoe).patch(updateShoe);
+router
+  .route('/:id')
+  .get(getShoeById)
+  .delete(deleteShoe)
+  .patch(upload.fields([{ name: 'img', maxCount: 1 }]), updateShoe);
 
 module.exports = router;
