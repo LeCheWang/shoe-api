@@ -1,4 +1,5 @@
 const orderModel = require('../models/order.model');
+const cartModel = require('../models/cart.model');
 
 module.exports = {
   getOrder: async (req, res) => {
@@ -23,6 +24,8 @@ module.exports = {
   },
   createOrder: async (req, res) => {
     const body = req.body;
+    const cart_id = body.cart;
+    await cartModel.findByIdAndDelete(cart_id);
     const order = await orderModel.create(body);
     return res.status(201).json(order);
   },
