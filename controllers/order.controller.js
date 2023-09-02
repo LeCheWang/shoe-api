@@ -3,10 +3,14 @@ const orderModel = require('../models/order.model');
 module.exports = {
   getOrder: async (req, res) => {
     const account_id = req.query.account_id;
+    const status = req.query.status;
 
     const bodyQuery = {};
     if (account_id) {
       bodyQuery.account = account_id;
+    }
+    if (status) {
+      bodyQuery.status = status;
     }
     const orders = await orderModel.find(bodyQuery).populate({
       path: 'cart',

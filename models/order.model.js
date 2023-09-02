@@ -30,8 +30,8 @@ const orderSchema = mongoose.Schema(
     },
     status: {
         type: String,
-        enum: ["To Ship", "To Receive", "Completed", "Cancelled"], 
-        default: "To Ship"
+        enum: ["pay", "ship", "receive", "rate"], 
+        default: "pay"
     },
     cart: {
       type: mongoose.SchemaTypes.ObjectId,
