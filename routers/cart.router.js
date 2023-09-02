@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 const {
-  getCards,
-  createCard,
+  getCarts,
+  createCart,
   deleteItem,
-} = require('../controllers/card.controller');
+} = require('../controllers/cart.controller');
 
-router.route('/:user').get(getCards).post(createCard);
+router.route('/:user').get(getCarts).post(createCart);
 
 router.route('/:user/:shoe').delete(deleteItem);
 

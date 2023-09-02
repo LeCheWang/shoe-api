@@ -2,6 +2,18 @@ const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema(
   {
+    customer: {
+      type: String,
+      required: true
+    },
+    phone: {
+      type: String,
+      required: true
+    },
+    address: {
+      type: String,
+      requried: true
+    },
     total_money: {
       type: Number,
       requried: true,
@@ -21,11 +33,15 @@ const orderSchema = mongoose.Schema(
         enum: ["To Ship", "To Receive", "Completed", "Cancelled"], 
         default: "To Ship"
     },
-    card: {
+    cart: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'card',
+      ref: 'cart',
       required: true,
     },
+    account: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "account"
+    }
   },
   {
     timestamps: true,

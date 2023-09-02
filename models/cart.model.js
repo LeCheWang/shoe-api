@@ -30,6 +30,6 @@ const cartSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Cart = mongoose.model('card', cartSchema);
+const Cart = mongoose.model('cart', cartSchema);
 
 module.exports = Cart;
