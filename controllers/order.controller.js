@@ -10,6 +10,9 @@ module.exports = {
     }
     const orders = await orderModel.find(bodyQuery).populate({
       path: 'cart',
+      populate: {
+        path: 'shoe',
+      },
     });
 
     return res.status(200).json(orders);
