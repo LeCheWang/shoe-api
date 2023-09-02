@@ -8,7 +8,11 @@ module.exports = {
         user: user,
       })
       .populate('items.shoe');
-
+    if (!carts){
+      return res
+        .status(404)
+        .json({ error: 'Chưa có sản phẩm nào' });
+    }
     return res.status(200).json(carts);
   },
   createCart: async (req, res) => {
