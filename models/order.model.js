@@ -35,7 +35,7 @@ const orderSchema = mongoose.Schema(
     },
     cart: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'cart',
+      ref: 'cartt',
       required: true,
     },
     account: {
