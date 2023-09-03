@@ -3,12 +3,14 @@ const cartModel = require('../models/cart.model');
 module.exports = {
   getCarts: async (req, res) => {
     const user = req.params.user;
-    const carts = await cartModel
-      .findOne({
-        user: user,
-        isOrder: 0,
-      })
-      .populate('items.shoe');
+    const isOrder = req.query.isOrder;
+    const bodyQuery = {
+      user: user,
+    };
+    if (isOrder) {
+      bodyQuery.isOrder = isOrder;
+    }
+    const carts = await cartModel.findOne(bodyQuery).populate('items.shoe');
     if (!carts) {
       return res.status(404).json({ error: 'Chưa có sản phẩm nào' });
     }
