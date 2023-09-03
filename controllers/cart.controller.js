@@ -22,6 +22,7 @@ module.exports = {
     const body = req.body;
     const cart = await cartModel.findOne({
       user: user,
+      isOrder: 0
     });
     let newCart;
     if (!cart) {
