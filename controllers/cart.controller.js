@@ -22,7 +22,7 @@ module.exports = {
     const body = req.body;
     const cart = await cartModel.findOne({
       user: user,
-      isOrder: 0
+      isOrder: 0,
     });
     let newCart;
     if (!cart) {
@@ -31,9 +31,10 @@ module.exports = {
         items: [body],
       });
     } else {
+      cart.items.push(body);
       newCart = await cartModel.findOneAndUpdate(
         { user: user },
-        { items: [...cart.items, body] },
+        { items: cart.items },
         { new: true },
       );
     }
