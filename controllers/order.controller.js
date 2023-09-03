@@ -25,7 +25,7 @@ module.exports = {
   createOrder: async (req, res) => {
     const body = req.body;
     const cart_id = body.cart;
-    await cartModel.findByIdAndDelete(cart_id);
+    await cartModel.findByIdAndUpdate(cart_id, { isOrder: 1 });
     const order = await orderModel.create(body);
     return res.status(201).json(order);
   },

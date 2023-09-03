@@ -6,12 +6,11 @@ module.exports = {
     const carts = await cartModel
       .findOne({
         user: user,
+        isOrder: 0,
       })
       .populate('items.shoe');
-    if (!carts){
-      return res
-        .status(404)
-        .json({ error: 'Chưa có sản phẩm nào' });
+    if (!carts) {
+      return res.status(404).json({ error: 'Chưa có sản phẩm nào' });
     }
     return res.status(200).json(carts);
   },
