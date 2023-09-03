@@ -5,8 +5,7 @@ const cartSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'account',
-      required: true,
-      unique: true,
+      required: true, 
     },
     isOrder: {
       type: Number,
@@ -38,6 +37,6 @@ const cartSchema = new mongoose.Schema(
   },
 );
 
-const Cart = mongoose.model('cartt', cartSchema);
+const Cart = mongoose.model('carttt', cartSchema);
 
 module.exports = Cart;
