@@ -31,10 +31,9 @@ module.exports = {
         items: [body],
       });
     } else {
-      cart.items.push(body);
       newCart = await cartModel.findOneAndUpdate(
-        { user: user },
-        { items: cart.items },
+        { user: user, isOrder: 0 },
+        { items: [...cart.items, body] },
         { new: true },
       );
     }
