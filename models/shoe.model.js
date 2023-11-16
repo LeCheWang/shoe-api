@@ -31,7 +31,7 @@ const shoeSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['Main', 'Soccer', 'Sneaker', 'Basketball', 'Oxford', 'Loafer'],
+      enum: ['Main', 'Soccer', 'Sneaker', 'Basketball', 'Oxford', 'Loafer', 'Apple', "Samsung", "Huawei", "Xiaomi"],
       default: 'Main',
     },
   },
