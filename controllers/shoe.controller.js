@@ -25,16 +25,18 @@ module.exports = {
 
       return res.status(201).json(shoes);
     } catch (error) {
-      return res
-        .status(500)
-        .json({ error: 'Error: ' + error.message });
+      return res.status(500).json({ error: 'Error: ' + error.message });
     }
   },
 
   getShoes: async (req, res) => {
     try {
       const category = req.query.category;
-      const bodyQuery = {};
+      const bodyQuery = {
+        category: {
+          $in: ['Apple', 'Samsung', 'Huawei', 'Xiaomi'],
+        },
+      };
       if (category) {
         bodyQuery.category = category;
       }
@@ -67,7 +69,7 @@ module.exports = {
     try {
       const shoeId = req.params.id;
 
-      let imageUrl = req.files['img']?.[0]?.path; 
+      let imageUrl = req.files['img']?.[0]?.path;
       const { name, description, price, newPrice, sizes, category } = req.body;
       if (!imageUrl) {
         imageUrl = req.body.imageUrl;
