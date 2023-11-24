@@ -45,7 +45,7 @@ module.exports = {
     } catch (error) {
       return res
         .status(500)
-        .json({ error: 'Đã xảy ra lỗi khi lấy danh sách giày' });
+        .json({ error: 'Đã xảy ra lỗi khi lấy danh sách' });
     }
   },
 
@@ -56,12 +56,12 @@ module.exports = {
       // Tìm giày theo ID
       const shoe = await Shoe.findById(shoeId);
       if (!shoe) {
-        return res.status(404).json({ error: 'Không tìm thấy giày' });
+        return res.status(404).json({ error: 'Không tìm thấy' });
       }
 
       return res.status(200).json(shoe);
     } catch (error) {
-      return res.status(500).json({ error: 'Đã xảy ra lỗi khi lấy giày' });
+      return res.status(500).json({ error: 'Đã xảy ra lỗi khi lấy dữ liệu' });
     }
   },
 
@@ -92,7 +92,7 @@ module.exports = {
 
       return res.status(200).json(updated_shoe);
     } catch (error) {
-      return res.status(500).json({ error: 'Đã xảy ra lỗi khi cập nhật giày' });
+      return res.status(500).json({ error: 'Đã xảy ra lỗi khi cập nhật dữ liệu' });
     }
   },
 
@@ -103,15 +103,15 @@ module.exports = {
       // Kiểm tra xem giày có tồn tại trong CSDL hay không
       const existingShoe = await Shoe.findById(shoeId);
       if (!existingShoe) {
-        return res.status(404).json({ error: 'Không tìm thấy giày' });
+        return res.status(404).json({ error: 'Không tìm thấy dữ liệu' });
       }
 
       // Xóa giày
       await Shoe.findByIdAndDelete(shoeId);
 
-      return res.status(200).json({ message: 'Xóa giày thành công' });
+      return res.status(200).json({ message: 'Xóa thành công' });
     } catch (error) {
-      return res.status(500).json({ error: 'Đã xảy ra lỗi khi xóa giày' });
+      return res.status(500).json({ error: 'Đã xảy ra lỗi khi xóa' });
     }
   },
 };
